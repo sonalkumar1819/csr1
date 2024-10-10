@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre for Space Research</title>
+    <style>
+         /* General Styles */
+         body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #003366;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #00FFFF;
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 30px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+
+        .navbar ul li img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar ul li img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px #FFD700);
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #4c00ff, 0 0 20px #b300ff, 0 0 30px #6600ff, 0 0 40px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF;
+            }
+        }
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #003366;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .navbar ul li a {
+                font-size: 1.5rem;
+                padding: 20px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+        body {
+  background-color: #eee;
+}
+.hello {
+  opacity: 1 !important;
+}
+.full {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.full .content {
+  background-color: rgba(0,0,0,0.75) !important;
+  height: 100%;
+  width: 100%;
+  display: grid;
+}
+.full .content img {
+  left: 50%;
+  transform: translate3d(0, 0, 0);
+  animation: zoomin 1s ease;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+.byebye {
+  opacity: 0;
+}
+.byebye:hover {
+  transform: scale(0.2) !important;
+}
+.gallery {
+  display: grid;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 8px;
+}
+.gallery img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 16px #333;
+  transition: all 1.5s ease;
+}
+.gallery img:hover {
+  box-shadow: 0 0 32px #333;
+}
+.gallery .content {
+  padding: 4px;
+}
+.gallery .gallery-item {
+  transition: grid-row-start 300ms linear;
+  transition: transform 300ms ease;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.gallery .gallery-item:hover {
+  transform: scale(1.025);
+}
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+}
+@media (max-width: 400px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+  }
+}
+@-moz-keyframes zoomin {
+  0% {
+    max-width: 50%;
+    transform: rotate(-30deg);
+    filter: blur(4px);
+  }
+  30% {
+    filter: blur(4px);
+    transform: rotate(-80deg);
+  }
+  70% {
+    max-width: 50%;
+    transform: rotate(45deg);
+  }
+  100% {
+    max-width: 100%;
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes zoomin {
+  0% {
+    max-width: 50%;
+    transform: rotate(-30deg);
+    filter: blur(4px);
+  }
+  30% {
+    filter: blur(4px);
+    transform: rotate(-80deg);
+  }
+  70% {
+    max-width: 50%;
+    transform: rotate(45deg);
+  }
+  100% {
+    max-width: 100%;
+    transform: rotate(0deg);
+  }
+}
+@-o-keyframes zoomin {
+  0% {
+    max-width: 50%;
+    transform: rotate(-30deg);
+    filter: blur(4px);
+  }
+  30% {
+    filter: blur(4px);
+    transform: rotate(-80deg);
+  }
+  70% {
+    max-width: 50%;
+    transform: rotate(45deg);
+  }
+  100% {
+    max-width: 100%;
+    transform: rotate(0deg);
+  }
+}
+@keyframes zoomin {
+  0% {
+    max-width: 50%;
+    transform: rotate(-30deg);
+    filter: blur(4px);
+  }
+  30% {
+    filter: blur(4px);
+    transform: rotate(-80deg);
+  }
+  70% {
+    max-width: 50%;
+    transform: rotate(45deg);
+  }
+  100% {
+    max-width: 100%;
+    transform: rotate(0deg);
+  }
+}
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggle = document.querySelector('.navbar::after');
+            navbarToggle.addEventListener('click', function() {
+                document.querySelector('.navbar').classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Centre for Space Research</h1>
+        <nav class="navbar">
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="publicaion.html">Publications</a></li>
+                <li><a href="reserch.html">Research</a></li>
+                <li><a href="achievment.html">Achievements</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="galler.html">Gallery</a></li>
+                <li><a href="contac.html">Contact</a></li>
+                <li><img src="cs.png" alt="Logo"></li>
+            </ul>
+        </nav>
+    </header><br><br><br><br><br><br><br><br><br><br>
+    <div class="gallery" id="gallery">
+        <div class="gallery-item">
+            <div class="content"><img src="space21.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space22.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space24.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space20.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space25.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space26.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space1.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space2.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space3.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space4.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space5.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space6.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space7.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space8.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space9.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space10.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space11.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space12.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space13.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space14.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space15.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space16.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space17.jpg" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="space19.jpg" alt=""></div>
+        </div>
+    </div>
+     
+</body>
+</html>
+    
+    <footer>
+        <p>&copy; 2024 Dr. Sumit sir. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.navbar ul');
+            menu.classList.toggle('show');
+        }
+        var gallery = document.querySelector('#gallery');
+var getVal = function (elem, style) { return parseInt(window.getComputedStyle(elem).getPropertyValue(style)); };
+var getHeight = function (item) { return item.querySelector('.content').getBoundingClientRect().height; };
+var resizeAll = function () {
+    var altura = getVal(gallery, 'grid-auto-rows');
+    var gap = getVal(gallery, 'grid-row-gap');
+    gallery.querySelectorAll('.gallery-item').forEach(function (item) {
+        var el = item;
+        el.style.gridRowEnd = "span " + Math.ceil((getHeight(item) + gap) / (altura + gap));
+    });
+};
+gallery.querySelectorAll('img').forEach(function (item) {
+    item.classList.add('byebye');
+    if (item.complete) {
+        console.log(item.src);
+    }
+    else {
+        item.addEventListener('load', function () {
+            var altura = getVal(gallery, 'grid-auto-rows');
+            var gap = getVal(gallery, 'grid-row-gap');
+            var gitem = item.parentElement.parentElement;
+            gitem.style.gridRowEnd = "span " + Math.ceil((getHeight(gitem) + gap) / (altura + gap));
+            item.classList.remove('byebye');
+        });
+    }
+});
+window.addEventListener('resize', resizeAll);
+gallery.querySelectorAll('.gallery-item').forEach(function (item) {
+    item.addEventListener('click', function () {        
+        item.classList.toggle('full');        
+    });
+});
+
+    </script>
+</body>
+</html>

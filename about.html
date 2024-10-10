@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre for Space Research</title>
+    <style>
+         /* General Styles */
+         body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #000000; /* Space black background */
+            color: #ffffff;
+            overflow: hidden; /* Hide overflow to prevent scrollbars from showing */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #003366;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            color: #00FFFF;
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 30px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+
+        .navbar ul li img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar ul li img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px #FFD700);
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #4c00ff, 0 0 20px #b300ff, 0 0 30px #6600ff, 0 0 40px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF;
+            }
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color:  #003366;
+                padding: 10px 0;
+                margin: 0;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .navbar ul li a {
+                font-size: 1.5rem;
+                padding: 15px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #4c00ff, 0 0 20px #b300ff, 0 0 30px #6600ff, 0 0 40px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF;
+            }
+        }
+
+        @keyframes spaceAnimation {
+            from {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            to {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        /* Content Styles */
+        .contentdiv {
+            padding: 80px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden; /* Hide overflow to keep the effect inside the content area */
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-body {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            animation: spaceAnimation 2s infinite alternate;
+        }
+
+        .pageContent {
+            margin-bottom: 20px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Space Background Animation */
+        .space-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('stars.jpg') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1;
+            animation: starField 20s linear infinite;
+        }
+
+        @keyframes starField {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Centre for Space Research</h1>
+        <nav class="navbar">
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="publicaion.html">Publications</a></li>
+                <li><a href="reserch.html">Research</a></li>
+                <li><a href="achievment.html">Achievements</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="galler.html">Gallery</a></li>
+                <li><a href="contac.html">Contact</a></li>
+                <li><img src="cs.png" alt="Logo"></li>
+            </ul>
+        </nav>
+    </header><br><br>
+
+    <div class="space-background"></div>
+
+    <div class="contentdiv">
+        <div class="card">
+            <div class="card-body">
+                <p class="pageContent">
+                    The Centre for Space Research (CSR), established in 2021 under the auspices of Lovely Professional University (LPU), is a nonprofit organization with a mission to advance space-related science, technology, and engineering. As a leading research center, CSR operates in collaboration with the Universities Space Research Association (USRA) to manage scientific institutes and facilities, conduct advanced research, and run major educational programs. With a focus on fostering innovation, CSR engages the LPU academic community through various initiatives that provide in-house scientific leadership, cutting-edge research and development, and specialized project management expertise.
+                </p>
+                <p class="pageContent">
+                    The center’s role extends beyond academia, as it actively contributes to the defense and space manufacturing industry, addressing critical challenges in space exploration and technology. CSR’s research portfolio covers a range of disciplines, from space engineering to data science, and it often collaborates with national and international partners to further its impact. The organization employs 51 to 200 staff members, many of whom are industry professionals, scientists, and researchers dedicated to making strides in space-related studies.
+                </p>
+                <p class="pageContent"> 
+                    Located in Jalandhar, Punjab, CSR serves as a key player in India's growing space sector. In addition to its local influence, CSR is making a name for itself on the global stage, aiming to create breakthroughs in space technology that can benefit both scientific inquiry and commercial space ventures. Since its founding, CSR has seen continuous growth and engagement, with two associated LinkedIn members listing CSR as their current workplace.
+                </p>
+                <p class="pageContent"> 
+                    As part of its mission, CSR also focuses on creating educational opportunities, offering programs designed to cultivate the next generation of space scientists and engineers. The center encourages student participation in cutting-edge research and provides platforms for them to work on real-world space projects. CSR continues to lead impactful research and innovation, pushing the boundaries of space exploration and contributing to the global effort of advancing space technology and knowledge.
+                </p>
+                <p class="pageContent"> 
+                    The Centre for Space Research (CSR) at LPU also plays a pivotal role in driving technological advancements that have practical applications in everyday life. Through its collaboration with industries, CSR aims to translate research into actionable solutions that contribute to the broader space economy. The center is involved in developing cutting-edge technologies such as satellite systems, space communications, and propulsion systems, which are crucial for future space exploration missions.
+                </p>
+                <p class="pageContent"> 
+                    CSR regularly hosts conferences, workshops, and seminars to bring together experts from around the world, fostering collaboration and knowledge exchange. These events provide students and researchers with the opportunity to learn from industry leaders and gain insights into the latest trends and advancements in space science. Additionally, CSR is committed to addressing global challenges, such as climate change and resource management, by exploring how space technology can be leveraged to monitor and mitigate environmental issues.
+                    
+                </p>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Dr. Sumit sir. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.navbar ul');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

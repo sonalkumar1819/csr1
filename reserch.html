@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre for Space Research</title>
+    <style>
+         /* General Styles */
+         body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #003366;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #00FFFF;
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 30px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+
+        .navbar ul li img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar ul li img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px #FFD700);
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #4c00ff, 0 0 20px #b300ff, 0 0 30px #6600ff, 0 0 40px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF;
+            }
+        }
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #003366;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .navbar ul li a {
+                font-size: 1.5rem;
+                padding: 20px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.research-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.research-item {
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0; /* Start hidden for fade-in effect */
+    transform: translateY(50px); /* Start position for animation */
+    animation: fadeInUp 1s ease-out forwards; /* Fade and slide-up effect */
+}
+
+.research-photo {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Hover animation */
+}
+
+.photo-description {
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.3s forwards; /* Delayed fade-in for text */
+}
+
+.photo-description h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.photo-description p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.separator-line {
+    margin-top: 20px;
+    border: none;
+    border-top: 2px solid black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hover effect on photo */
+.research-photo:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); /* Add deeper shadow */
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .research-photo {
+        max-width: 100%;
+    }
+
+    .photo-description h3 {
+        font-size: 20px;
+    }
+
+    .photo-description p {
+        font-size: 14px;
+    }
+}
+
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggle = document.querySelector('.navbar::after');
+            navbarToggle.addEventListener('click', function() {
+                document.querySelector('.navbar').classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Centre for Space Research</h1>
+        <nav class="navbar">
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="publicaion.html">Publications</a></li>
+                <li><a href="reserch.html">Research</a></li>
+                <li><a href="achievment.html">Achievements</a></li>
+                <li><a href="galler.html">Gallery</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="contac.html">Contact</a></li>
+                <li><img src="cs.png" alt="Logo"></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="research-section">
+
+        <!-- First Photo and Description -->
+        <div class="research-item">
+            <img src="https://images.shiksha.com/mediadata/images/articles/1700117498phptQMvUG.jpeg" alt="Research Photo 1" class="research-photo">
+            <div class="photo-description">
+                <h3>Research Topic 1</h3>
+                <p>This research focuses on the development of new AI-based models to enhance real-time processing in autonomous systems.</p>
+            </div>
+            <hr class="separator-line">
+        </div>
+
+        <!-- Second Photo and Description -->
+        <div class="research-item">
+            <img src="https://images.shiksha.com/mediadata/images/articles/1700117498phptQMvUG.jpeg" alt="Research Photo 2" class="research-photo">
+            <div class="photo-description">
+                <h3>Research Topic 2</h3>
+                <p>This study delves into the environmental impacts of sustainable energy solutions and their global scalability.</p>
+            </div>
+            <hr class="separator-line">
+        </div>
+
+        <!-- Add more research items as needed -->
+        
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Dr. Sumit sir. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.navbar ul');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre for Space Research</title>
+    <style>
+         /* General Styles */
+         body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #003366;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #00FFFF;
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 30px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+
+        .navbar ul li img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar ul li img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px #FFD700);
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #4c00ff, 0 0 20px #b300ff, 0 0 30px #6600ff, 0 0 40px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF;
+            }
+        }
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #003366;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .navbar ul li a {
+                font-size: 1.5rem;
+                padding: 20px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Styles for the achievement section */
+.achievement {
+    text-align: center; /* Center text */
+    padding: 20px; /* Add padding */
+    background-color: #f0f8ff; /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 20px; /* Margin for spacing */
+    animation: fadeIn 1s ease-in-out; /* Animation */
+}
+
+h4 {
+    margin: 10px 0; /* Vertical margin */
+    line-height: 1.5; /* Line height */
+    color: #333; /* Text color */
+    transition: transform 0.3s; /* Transition for animation */
+}
+
+.k img {
+    width: 100%; /* Responsive image */
+    max-width: 500px; /* Maximum width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.3s; /* Image transition */
+}
+
+/* Animation for text */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect for h3 */
+h4:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+/* Hover effect for images */
+.k img:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+   
+        
+     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggle = document.querySelector('.navbar::after');
+            navbarToggle.addEventListener('click', function() {
+                document.querySelector('.navbar').classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Centre for Space Research</h1>
+        <nav class="navbar">
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="publicaion.html">Publications</a></li>
+                <li><a href="reserch.html">Research</a></li>
+                <li><a href="achievment.html">Achievements</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="galler.html">Gallery</a></li>
+                <li><a href="contac.html">Contact</a></li>
+                <li><img src="cs.png" alt="Logo"></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br><br><br><br>
+    <section class="achievement">
+        <hr>
+        <h4>1st Place at CanSat India Competition</h4>
+        <h4>Issued by ISRO, InSpace, ASI · Apr 2024</h4>
+        <div class="k">
+            <img src="space20.jpg" alt="CanSat Achievement">
+        </div>
+        <hr>
+    </section>
+
+    
+    <footer>
+        <p>&copy; 2024 Dr. Sumit sir. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.navbar ul');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
